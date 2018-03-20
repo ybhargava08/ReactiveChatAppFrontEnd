@@ -1,0 +1,12 @@
+<ul id="chatArea" #scrollChatArea [scrollTop]="scrollChatArea.scrollHeight">
+ <li *ngFor="let chatMsg of chatMessages">
+   <div class='nameTag' [ngStyle]="{'backgroundColor':getAvatarColor(chatMsg.userName)}">{{chatMsg.userName[0] | uppercase}}</div>
+   <div class='chatTag'>
+     <div class = 'upper'>{{chatMsg.userName}} :</div>
+     <div class = "middle"><img src = "assets/images/clock.png">
+                     <span><i>{{chatMsg.chatDate | date: 'fullDate'}} at {{chatMsg.chatDate | date: 'shortTime'}}</i></span></div>
+     <div class = 'lower'>{{chatMsg.chat}}</div>
+   </div>
+ </li>
+</ul>
+<div id="typeIndicator"></div>

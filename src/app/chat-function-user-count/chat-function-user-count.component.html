@@ -1,0 +1,10 @@
+<div id = "chatWelcomeMsg">
+  <span>
+    <img src = "assets/images/people.png"/>
+  </span>
+  <span id="userCount">{{userCount}} online</span>
+  <span id="userNameDisplay">Hi {{chatUserName}} Start Typing...</span>
+   <span id = "userListId">
+    <span  *ngFor = "let name of userList let i=index"><i>{{name}}{{(i === userList.length-1)?'':', '}}</i></span>
+   </span>
+</div>

@@ -1,0 +1,44 @@
+#chatBox{
+	position: absolute;
+	width: 50%;
+	top: 15%;
+	margin: 0 0 0 20%;
+	height: 80%;
+}
+
+.joined,.leave{
+	position:absolute;
+	padding: 1%;
+	width: 13%;
+	height: 85%;
+	list-style-type: none;
+}
+
+.joined{
+	 margin: 0 0 1% -22%; 
+}
+
+.leave{
+	margin: 0 0 1% 0;
+	left: 100%;
+}
+
+.joined li,.leave li{
+	font-family: 'Itim',cursive;
+	position:relative;
+	width: 98%;
+	padding: 5%;
+	font-size: 25px; 
+	margin : 6% 6%;
+	left:0;
+	text-align:center;
+	z-index:2;
+	background-color: #D9853B;
+	color: white;
+	font-weight: 200;
+	word-wrap:break-word;
+	text-shadow: 1px 2px #558C89;
+	box-shadow: 0 10px 5px -5px #558C89;
+	border: 1px solid #558C89;
+	border-radius: 10px;
+}

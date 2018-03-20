@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import url('http://fonts.googleapis.com/css?family=Lato:400,700'); */
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Itim|Courgette');
+
+body{
+	    overflow: hidden;
+	    background-color: #74AFAD;
+}
+
+h1{
+	font-family: 'Dancing Script', cursive, Tahoma, Arial, sans-serif;
+	font-size: 3em;
+	color: #222;
+    text-shadow: 0px 2px 3px #555;
+    width: 100%;
+    height: 5%;
+    margin: 1% 0 0 0;
+    padding: 0 0 1% 0;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 8px 5px -5px #558C89;
+}
+
+input[type='text']{
+	outline: none;
+	border-bottom: 2px solid rgba(255,255,255, 1);
+	border-top: 0;
+	border-left:0;
+	border-right:0;
+	color: #fff;
+	font-weight: 500;
+	background: transparent;
+}
+
+button{
+	border-radius: 5px;
+	background-color:#D9853B;
+	color:white;
+	font:15px Tahoma, Helvetica, Arial, Sans-Serif;
+	text-align:center;	
+	transition: transform 0.5s ease-in-out;
+	outline:none;
+	border:none;
+	box-shadow: 2px 2px 4px #558C89;
+}
+
+button:hover{
+	cursor:pointer;
+	background-color: #da873e;
+}
+
+button:active{
+	transform: translate(0,6px);
+}
+
+::-webkit-scrollbar{
+	display:none;
+}
+
+input[type='text']::placeholder{
+	color: white;
+	font-family: Tahoma;
+	opacity: 0.5;
+}
+
+ label{
+	margin: 0 0 0 3%;
+	color: #fff;
+	opacity: 0.5;
+	font-family: Tahoma;
+	font-size: 0.9em;
+	/* text-shadow: 0.2px 0.2px #000; */
+}
+
+
+@keyframes headingAnim{
+	0%{
+	transform : rotateY(360deg);
+	}
+	
+	20%,100%{
+	transform : rotateY(0deg);
+	}
+}

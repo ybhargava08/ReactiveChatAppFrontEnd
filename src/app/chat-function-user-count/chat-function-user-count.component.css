@@ -1,0 +1,45 @@
+#chatWelcomeMsg{
+	position:relative;
+	height: 12%;
+	width: 100%;
+	margin:0;
+	background-color: #558C89;
+  /* box-shadow: 0 10px 5px -5px #558C89; */
+}
+
+#chatWelcomeMsg #userCount{
+	margin : 1% 0 0 1%;
+	color: #fff;
+	font-family: Tahoma;
+	font-size: 1em; 
+}
+
+#chatWelcomeMsg span img{
+	width: 8%;
+	height: 90%;
+	vertical-align: middle;
+}
+
+#userNameDisplay{
+	position: absolute;
+	font-family : 'Courgette', cursive, Tahoma;
+	left: 24%;
+	top: 5%;
+	font-weight: bold;
+	color: #fff;
+	font-size: 1.7em;
+	text-shadow: 0px 1px 1px #555;
+}
+
+#userListId{
+	position: absolute;
+	top : 60%; 
+	left: 24%;
+	background: #cee3e2;
+	border : 1px solid #558C89;
+	padding: 0.5% 1% 0.5% 1%;
+	border-radius: 15px;
+	color: #558C89;
+	font-size: 0.9em;
+	text-shadow: 0px 0.1px 0.1px #000;
+}

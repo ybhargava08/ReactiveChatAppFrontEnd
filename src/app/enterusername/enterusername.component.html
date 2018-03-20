@@ -1,0 +1,10 @@
+<div class ="userNameDiv" *ngIf="!showHideChat">
+	<div class="userNameTextBoxDiv">
+		<label for ="usrNameTextBox" [style.visibility]="labelVisibility">Enter Name</label>
+			<input type ="text" id = "usrNameTextBox" #usrName (keyup.enter)="addUserToChat(usrName.value.trim()); usrName.value=''" 
+                 (focus) = "onTextBoxFocus()" (blur) = "onTextBoxBlur()"
+                 [ngClass]="checkIfEmptyClassName" placeholder={{placeHolderValue}}/>
+	</div>
+	<button (click)="addUserToChat(usrName.value); usrName.value=''">Enter</button>
+</div>
+<app-chat-function [chatUserName]="enteredUserName" [uniqueMsgId] = "msgId" *ngIf="showHideChat"></app-chat-function>

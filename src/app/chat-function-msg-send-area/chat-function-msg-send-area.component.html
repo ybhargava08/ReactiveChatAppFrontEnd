@@ -1,0 +1,10 @@
+<div class ="chatSendArea">
+<span><img src = "assets/images/msg.png"></span>
+		<input type ="text"
+		    id="chatTextId" #chatText (keyup.enter)="sendMsg(chatText.value); chatText.value=''" 
+		    placeholder="Type a message..." onfocus="this.placeholder=''" onblur="this.placeholder='Type a message...'"/>
+		<button (click)="sendMsg(chatText.value); chatText.value=''">
+			<img src = "assets/images/send-arrow.png" />
+		</button>    
+</div>
+   
