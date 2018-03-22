@@ -7,4 +7,4 @@
 	</div>
 	<button (click)="addUserToChat(usrName.value); usrName.value=''">Enter</button>
 </div>
-<app-chat-function [chatUserName]="enteredUserName" [uniqueMsgId] = "msgId" *ngIf="showHideChat"></app-chat-function>
+<app-chat-function [chatUserName]="enteredUserName" [uniqueMsgId] = "msgId" [avatarColor] = "avatarColor" *ngIf="showHideChat"></app-chat-function>

@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
 import { MessageBean } from '../messagebean';
+import { MsgType } from '../msgtype.enum';
 
 @Component({
   selector: 'app-chat-function-msgshowarea',
   templateUrl: './chat-function-msgshowarea.component.html',
   styleUrls: ['./chat-function-msgshowarea.component.css']
 })
-export class ChatFunctionMsgshowareaComponent implements OnInit {
+export class ChatFunctionMsgshowareaComponent implements OnInit, OnDestroy {
 
   public chatMessages = [];
-  
+  public randColor = [];
   private  colors = [
       '#2196F3', '#32c787', '#00BCD4', '#ff5652',
       '#ffc107', '#ff85af', '#FF9800', '#39bbb0'
@@ -25,19 +26,16 @@ export class ChatFunctionMsgshowareaComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.wsService.subject.unsubscribe();
+  }
+  
     extractChatMsg(msgbean: MessageBean) {
-       if (msgbean.msgType === 'Chat') {
+       if (msgbean.msgType === (MsgType.Chat as string)) {
         this.chatMessages.push(msgbean);
       }
     }
   
-   public getAvatarColor(usrName) {
-     let hash = 0;
-        for (let i = 0; i < usrName.length; i++) {
-            hash = 31 * hash + usrName.charCodeAt(i);
-        }
-        const index = Math.abs(hash % this.colors.length);
-        return this.colors[index];
-  }
-  
 }
+
+  

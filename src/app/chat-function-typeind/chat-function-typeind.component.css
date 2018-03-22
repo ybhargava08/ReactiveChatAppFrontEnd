@@ -1,0 +1,13 @@
+#typeIndicator{
+	position:relative;
+	margin:0;
+	width:99%;
+	height: 4%;
+	background: #cee3e2;
+	border: 1px solid #558C89;
+	border-top : 0;
+	font-family: Tahoma;
+	font-size: 0.7em;
+	color: #558C89;
+	padding: 0 0 0 1%;
+}

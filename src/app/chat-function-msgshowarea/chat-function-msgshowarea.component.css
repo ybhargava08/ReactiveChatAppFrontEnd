@@ -33,8 +33,8 @@
 	margin: 1%;
 	padding: 1%;
 	border-radius:50%;
-	background-color: red;
 	color:white;
+	background:red;
 	font-size: 30px;
 	font-weight:bold;
 	text-align: center;
@@ -85,12 +85,3 @@
 	word-wrap:  break-word;
 }
 
-#typeIndicator{
-	position:relative;
-	margin:0;
-	width:100%;
-	height: 4%;
-	background: #cee3e2;
-	border: 1px solid #558C89;
-	border-top : 0;
-}

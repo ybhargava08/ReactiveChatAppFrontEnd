@@ -1,10 +1,13 @@
-import { UserInfoBean } from './userinfobean';
+import { MsgType } from './msgtype.enum';
+import { UserStatBean } from './userstatbean';
 
 export class MessageBean {
   userName: String;
-  msgType: String;
+  msgType: MsgType; 
   chat: String;
   uniqueId: number;
   chatDate: number;
-  allUsers: Array<UserInfoBean> ;
+  typedTime: number;
+  userstats: Array<UserStatBean>;
+  userAvatarColor: string;
 }

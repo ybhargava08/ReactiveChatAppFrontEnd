@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, Input, HostListener, OnDestroy } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
 import { MessageBean } from '../messagebean';
 import { trigger , state , style , animate , transition } from '@angular/animations';
+import { MsgType } from '../msgtype.enum';
 
 @Component({
   selector: 'app-chat-function',
@@ -31,12 +32,13 @@ import { trigger , state , style , animate , transition } from '@angular/animati
     ]),
   ]
 })
-export class ChatFunctionComponent implements OnInit {
+export class ChatFunctionComponent implements OnInit, OnDestroy {
 
   @Input() chatUserName: String;
   @Input() uniqueMsgId: number;
+  @Input() avatarColor: string;
   public  userJoined = []; userLeft = []; 
-    
+      
   constructor(private wsService: WebsocketService) { 
      wsService.subject.subscribe(msg =>  {
          this.extractMsgAndShow(msg);
@@ -45,21 +47,10 @@ export class ChatFunctionComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  @HostListener('window:unload', ['$event'])
-  onWindowUnload(event) {
-    const msgbean: MessageBean = {
-      userName: this.chatUserName,
-      msgType: 'Left',
-      chat: '' ,
-      uniqueId: this.uniqueMsgId,
-      chatDate: Date.now(),
-      allUsers: [],      
-    };
-    this.wsService.sendMessage(msgbean);
-    this.wsService.disconnect();
-  }
   
+  ngOnDestroy() {
+    this.wsService.subject.unsubscribe();
+  }
   @HostListener('window:beforeunload', ['$event'])
   onBeforeWindowUnload($event) {
     $event.returnValue = 'Are you sure you want to navigate away? Your chat would be lost';
@@ -67,11 +58,11 @@ export class ChatFunctionComponent implements OnInit {
   
   private extractMsgAndShow(msg: MessageBean) {
      if (msg) {
-         if (msg.msgType === 'Joined') {
+         if (msg.msgType === MsgType.Joined) {
              if (msg.uniqueId !== this.uniqueMsgId) {
               this.userJoined.push(msg); 
              }
-        } else if (msg.msgType === 'Left') {
+        } else if (msg.msgType === (MsgType.Left as string)) {
              if (msg.uniqueId !== this.uniqueMsgId) {
                   this.userLeft.push(msg);     
           }

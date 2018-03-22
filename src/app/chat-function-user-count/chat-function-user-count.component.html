@@ -1,10 +1,12 @@
 <div id = "chatWelcomeMsg">
-  <span>
+  <span id="groupImg">
     <img src = "assets/images/people.png"/>
   </span>
-  <span id="userCount">{{userCount}} online</span>
-  <span id="userNameDisplay">Hi {{chatUserName}} Start Typing...</span>
-   <span id = "userListId">
-    <span  *ngFor = "let name of userList let i=index"><i>{{name}}{{(i === userList.length-1)?'':', '}}</i></span>
-   </span>
+  <span id="userCount">{{userList.length}} online</span>
+   <ul id = "userListId" >
+     <li class = "userAttributes" *ngFor = "let users of userList">
+     	<div class = "userAvatar" [style.background] = "users.avatarColor">{{users.name[0] | uppercase}}</div>
+     	<div class = "userNameDisplay">{{users.name}}</div>
+     </li>
+   </ul>
 </div>

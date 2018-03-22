@@ -11,6 +11,7 @@ import { WebsocketService } from './websocket.service';
 import { ChatFunctionUserCountComponent } from './chat-function-user-count/chat-function-user-count.component';
 import { ChatFunctionMsgshowareaComponent } from './chat-function-msgshowarea/chat-function-msgshowarea.component';
 import { ChatFunctionMsgSendAreaComponent } from './chat-function-msg-send-area/chat-function-msg-send-area.component';
+import { ChatFunctionTypeindComponent } from './chat-function-typeind/chat-function-typeind.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ChatFunctionMsgSendAreaComponent } from './chat-function-msg-send-area/
     ChatFunctionComponent,
     ChatFunctionUserCountComponent,
     ChatFunctionMsgshowareaComponent,
-    ChatFunctionMsgSendAreaComponent
+    ChatFunctionMsgSendAreaComponent,
+    ChatFunctionTypeindComponent
   ],
   imports: [
     BrowserModule,

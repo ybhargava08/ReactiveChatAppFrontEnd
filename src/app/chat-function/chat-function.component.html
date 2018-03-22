@@ -5,7 +5,10 @@
  <li *ngFor = "let leaveMsg of userLeft.reverse();" [@leaveSlideLeft] = "leaveSlideLeft">{{leaveMsg.userName}} {{leaveMsg.msgType}}</li>
 </ul>
 <div id="chatBox">
-<app-chat-function-user-count [uniqueMsgId] = "uniqueMsgId" [chatUserName] = "chatUserName"></app-chat-function-user-count>
+<app-chat-function-user-count [uniqueMsgId] = "uniqueMsgId" [chatUserName] = "chatUserName" 
+                         [avatarColor] = "avatarColor"></app-chat-function-user-count>
 <app-chat-function-msgshowarea></app-chat-function-msgshowarea>
-<app-chat-function-msg-send-area [chatUserName] = "chatUserName" [uniqueMsgId] = "uniqueMsgId"></app-chat-function-msg-send-area>
+<app-chat-function-typeind [uniqueMsgId] = "uniqueMsgId"></app-chat-function-typeind>
+<app-chat-function-msg-send-area [chatUserName] = "chatUserName" [uniqueMsgId] = "uniqueMsgId" 
+                               [avatarColor]="avatarColor"></app-chat-function-msg-send-area>
 </div>

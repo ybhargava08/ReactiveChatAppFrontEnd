@@ -14,7 +14,6 @@ export class WebsocketService {
   
   public connect(url, msg: MessageBean): void {
        this.ws = new WebSocket(url);
-      console.log('webscoket ' + this.ws.readyState);
        this.ws.onopen = (e) => {
         this.sendMessage(msg);
       };
@@ -24,7 +23,6 @@ export class WebsocketService {
         };
      
         this.ws.onmessage  = (e) => {
-           console.log('message received in on message: ' + this.subject);
           this.subject.next(JSON.parse(e.data));
         };
             
