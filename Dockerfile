@@ -13,7 +13,7 @@ RUN $(npm bin)/ng build --prod
 
 FROM nginx:1.13.9-alpine
 RUN rm -rf /usr/share/nginx/html/*
-COPY --from=node /ChatApp/dist/* /usr/share/nginx/html/
+COPY --from=node /ChatApp/dist /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/nginx.conf
 EXPOSE 9000
 CMD ["nginx", "-g", "daemon off;"]
