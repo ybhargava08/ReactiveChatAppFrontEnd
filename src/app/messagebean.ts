@@ -10,4 +10,5 @@ export class MessageBean {
   typedTime: number;
   userstats: Array<UserStatBean>;
   userAvatarColor: string;
+  isChatBot: boolean;
 }

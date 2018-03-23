@@ -33,7 +33,6 @@ export class ChatFunctionUserCountComponent implements OnInit, OnDestroy {
   modifyUserCount (msgbean: MessageBean) {
         if (msgbean) { 
           this.userList = msgbean.userstats.sort();
-          console.log('userList active: '+this.userList.length);
         }
      }
 }

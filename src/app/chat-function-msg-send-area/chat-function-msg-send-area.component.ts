@@ -47,7 +47,8 @@ export class ChatFunctionMsgSendAreaComponent implements OnInit, OnDestroy {
        chatDate: Date.now(),
        typedTime: 0,
        userstats: [],
-       userAvatarColor: this.avatarColor
+       userAvatarColor: this.avatarColor,
+       isChatBot: false
      };
      this.wsService.sendMessage(msgBean);
      }
@@ -62,7 +63,8 @@ export class ChatFunctionMsgSendAreaComponent implements OnInit, OnDestroy {
          chatDate: Date.now(),
          typedTime: Date.now(),
          userstats: [],
-         userAvatarColor: this.avatarColor
+         userAvatarColor: this.avatarColor,
+         isChatBot: false
       };
       return msgbean;
    }

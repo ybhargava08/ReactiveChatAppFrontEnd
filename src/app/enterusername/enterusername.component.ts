@@ -38,12 +38,12 @@ export class EnterusernameComponent implements OnInit {
          chatDate: Date.now(),
          typedTime: 0,
          userstats: [],
-         userAvatarColor: this.avatarColor
+         userAvatarColor: this.avatarColor,
+         isChatBot: false
       };
       
       this.wsService.connect(environment.websocket_url, msgbean);
       this.showHideChat = true;
-      console.log('this is messagebean : ' + msgbean.userName);
     } else {
       const vm = this;
       vm.checkIfEmptyClassName = 'userNameEmpty';

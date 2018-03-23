@@ -41,6 +41,16 @@
 	box-shadow:0 8px 5px -5px #558C89;
 }
 
+.imgTag{
+	position: relative;
+	width: 7%;
+	height: 100%;
+	margin: 1%;
+	padding: 0;
+	border-radius: 50%;
+	box-shadow:0 8px 5px -5px #558C89;
+}
+
 .chatTag{
 	position: relative;
 	width: 90%;
@@ -60,19 +70,19 @@
 }
 
 .chatTag > .middle{
-	position:relative;
-	width: 96%;	
+	position: relative;
+	width: 96%;
 }
 
 .chatTag > .middle span{
   padding: 0;
-	font-size: 0.7em;
+	font-size: 0.6em;
 	margin : -1% 0 0 0;
 }
 
 .chatTag > .middle img{
-	width: 2%;
-	height: 90%;
+	width: 1.5%;
+	height: 70%;
 	margin : 0 0 0 1%;
 	vertical-align: middle;
 }
@@ -81,7 +91,7 @@
 	position:relative;
 	width: 96%;
 	padding: 1%;
-	font-size: 1em;
+	font-size: 0.85em;
 	word-wrap:  break-word;
 }
 

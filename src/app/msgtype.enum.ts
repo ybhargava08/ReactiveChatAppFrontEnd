@@ -3,5 +3,6 @@ export enum MsgType {
      Joined = 'Joined',
      Left = 'Left',
      TypedInd = 'TypedInd',  
-     
+     ChatBotJoin = 'ChatBotJoin',
+     ChatBotLeave = 'ChatBotLeave',
 }

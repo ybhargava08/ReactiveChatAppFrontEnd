@@ -15,7 +15,7 @@ import { MsgType } from '../msgtype.enum';
          animate('500ms ease-in-out', style ({
           left: '160%'
       })),
-         animate('500ms 2000ms ease-in-out', style ({
+         animate('500ms 2500ms ease-in-out', style ({
           left: '0'
       }))
       ]),
@@ -25,7 +25,7 @@ import { MsgType } from '../msgtype.enum';
          animate('500ms ease-in-out', style ({
        left: '-130%'
       })),
-         animate('500ms 2000ms ease-in-out', style ({
+         animate('500ms 2500ms ease-in-out', style ({
        left: '0'
       }))
       ])
