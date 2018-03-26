@@ -1,1 +1,10 @@
-<div id="typeIndicator"><i>{{typeMsg}}</i></div> 
+<div id="typeIndicator">
+ <span *ngIf="((typedList | async)?.length > 8)"><i>8 or more are typing...</i></span>
+ <span *ngIf="(typedList | async)?.length >= 1"><i>
+   <span *ngFor = "let typedItem of (typedList | async); let i = index">{{typedItem.userName}}
+      {{(i === (typedList | async)?.length-1)?'':', '}}</span>
+   <span>{{((typedList | async)?.length === 1)?'is':'are'}} typing...</span>
+  </i></span>
+ <span *ngIf="((typedList | async)?.length === 0)"></span>
+ 
+</div>   

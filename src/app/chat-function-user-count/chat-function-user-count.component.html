@@ -2,9 +2,9 @@
   <span id="groupImg">
     <img src = "assets/images/people.png"/>
   </span>
-  <span id="userCount">{{userList.length}} online</span>
+  <span id="userCount">{{(onlineUserList | async)?.length}} online</span>
    <ul id = "userListId" >
-     <li class = "userAttributes" *ngFor = "let users of userList">
+     <li class = "userAttributes" *ngFor = "let users of (onlineUserList | async)">
      	<div class = "userAvatar" [style.background] = "users.avatarColor">{{users.name[0] | uppercase}}</div>
      	<div class = "userNameDisplay">{{users.name}}</div>
      </li>

@@ -3,6 +3,9 @@ import { MessageBean } from '../messagebean';
 import { WebsocketService } from '../websocket.service';
 import { MsgType } from '../msgtype.enum';
 import { UserStatBean } from '../userstatbean';
+import { NgRedux, select } from '@angular-redux/store';
+import { IAppState } from '../store';
+import { ONLINE_USER_LIST } from '../actions';
 
 @Component({
   selector: 'app-chat-function-user-count',
@@ -15,9 +18,9 @@ export class ChatFunctionUserCountComponent implements OnInit, OnDestroy {
   @Input() chatUserName: String;
   @Input() public uniqueMsgId: number;
   @Input() public avatarColor: string; 
-  public userList = [];
+  @select() onlineUserList;
   
-  constructor(private wsService: WebsocketService) {
+  constructor(private wsService: WebsocketService, private ngRedux: NgRedux<IAppState>) {
         wsService.subject.subscribe (msg => {
                   this.modifyUserCount(msg);        
         });
@@ -31,8 +34,8 @@ export class ChatFunctionUserCountComponent implements OnInit, OnDestroy {
   }
   
   modifyUserCount (msgbean: MessageBean) {
-        if (msgbean) { 
-          this.userList = msgbean.userstats.sort();
+        if (msgbean && (msgbean.msgType === (MsgType.Joined as string) || msgbean.msgType === (MsgType.Left as string))) { 
+            this.ngRedux.dispatch({type: ONLINE_USER_LIST, msgbeanpayload: msgbean});
         }
      }
 }

@@ -4,7 +4,7 @@ FROM node:9.8.0-alpine as node
 COPY package.json /ChatApp/
 WORKDIR /ChatApp/
 #RUN chmod -R 777 .
-RUN npm i
+RUN npm i && npm i --save redux && npm i --save @angular-redux/store
 COPY ./ /ChatApp/
 RUN $(npm bin)/ng build --prod
 

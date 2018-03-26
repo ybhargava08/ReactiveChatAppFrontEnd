@@ -18,7 +18,6 @@ export class EnterusernameComponent implements OnInit {
   public showHideChat = false;
   public labelVisibility = 'hidden';
   public placeHolderValue = 'Enter Name';
-  public avatarColor: string;
   
   ngOnInit() {
   }
@@ -27,9 +26,7 @@ export class EnterusernameComponent implements OnInit {
     if (usrName && usrName.trim()) {
       this.enteredUserName = usrName;
       this.msgId = Date.now();
-      
-      this.avatarColor = this.getAvatarColor();
-      
+            
       const msgbean: MessageBean = {
          userName : this.enteredUserName,
          msgType : MsgType.Joined,
@@ -38,7 +35,7 @@ export class EnterusernameComponent implements OnInit {
          chatDate: Date.now(),
          typedTime: 0,
          userstats: [],
-         userAvatarColor: this.avatarColor,
+         userAvatarColor: '',
          isChatBot: false
       };
       
@@ -63,14 +60,4 @@ export class EnterusernameComponent implements OnInit {
     this.placeHolderValue = 'Enter Name';
   }
   
-  private getAvatarColor(): string {
-      if (!this.avatarColor) {
-         this.avatarColor = '#' + (Math.floor( Math.random() * 0xFFFFFF )).toString(16);
-           
-           while (this.avatarColor === '#558C89' || this.avatarColor === '#ffffff' || this.avatarColor === '#cee3e2') {
-              this.avatarColor = '#' + (Math.floor( Math.random() * 0xFFFFFF )).toString(16);
-            }
-         }
-        return  this.avatarColor;
-  }
 }

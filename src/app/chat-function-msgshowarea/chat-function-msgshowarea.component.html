@@ -1,5 +1,5 @@
 <ul id="chatArea" #scrollChatArea [scrollTop]="scrollChatArea.scrollHeight">
- <li *ngFor="let chatMsg of chatMessages">
+ <li *ngFor="let chatMsg of (listchatmsgbeans | async)">
    <!-- <div class = 'imgTag' *ngIf="chatMsg.isChatBot"> -->
        <img class = 'imgTag' *ngIf="chatMsg.isChatBot" src = "assets/images/chatbot_img.png"/>
    <!-- </div> -->
