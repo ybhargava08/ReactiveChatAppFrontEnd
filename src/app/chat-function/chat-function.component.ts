@@ -84,7 +84,10 @@ export class ChatFunctionComponent implements OnInit, OnDestroy {
                     } else {
                         this.toggleChat.emit(false);
                     }
-                }
+                }else if (msg.msgType === (MsgType.Error as string)) {
+                      alert('Error Occured !! Disconnecting');
+                      this.toggleChat.emit(false);
+               }
      }
   }
 }

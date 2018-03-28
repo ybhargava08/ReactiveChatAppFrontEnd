@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MessageBean } from './messagebean';
 import { Subject } from 'rxjs/Subject';
+import { MsgType } from './msgtype.enum';
 
 @Injectable()
 export class WebsocketService {
@@ -21,7 +22,7 @@ export class WebsocketService {
       };
       
          this.ws.onerror = (e) => {
-            
+            this.subject.next(this.createErrorBean());
         };
      
         this.ws.onmessage  = (e) => {
@@ -44,6 +45,21 @@ export class WebsocketService {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
           this.ws.close();
     }
+  }
+  
+  private createErrorBean(): MessageBean {
+      const errorbean: MessageBean = {
+        userName : '',
+         msgType : MsgType.Error,
+         chat : '',
+         uniqueId: Date.now(),
+         chatDate: Date.now(),
+         typedTime: 0,
+         userstats: [],
+         userAvatarColor: '',
+         isChatBot: false
+      };
+     return errorbean;
   }
   
 }

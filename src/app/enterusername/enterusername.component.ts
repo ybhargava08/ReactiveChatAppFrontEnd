@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MessageBean } from '../messagebean';
 import { WebsocketService } from '../websocket.service';
 import { environment } from '../../environments/environment';
@@ -13,14 +13,17 @@ import { UPDATE_USER_DETAILS } from '../actions';
   templateUrl: './enterusername.component.html',
   styleUrls: ['./enterusername.component.css']
 })
-export class EnterusernameComponent implements OnInit {
-
+export class EnterusernameComponent implements OnInit, OnDestroy {
+  
  checkIfEmptyClassName = '';
   constructor(private wsService: WebsocketService, private ngRedux: NgRedux<IAppState>) { }
   public labelVisibility = 'hidden';
   public placeHolderValue = 'Enter Name';
     
   ngOnInit() {
+  }
+  
+  ngOnDestroy(): void {
   }
 
   addUserToChat(usrName) {

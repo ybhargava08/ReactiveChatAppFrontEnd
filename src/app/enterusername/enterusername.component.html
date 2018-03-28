@@ -1,4 +1,4 @@
-<div class ="userNameDiv" *ngIf="!showHideChat">
+<div class ="userNameDiv">
 	<div class="userNameTextBoxDiv">
 		<label for ="usrNameTextBox" [style.visibility]="labelVisibility">Enter Name</label>
 			<input type ="text" id = "usrNameTextBox" #usrName (keyup.enter)="addUserToChat(usrName.value.trim()); usrName.value=''" 

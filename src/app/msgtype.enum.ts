@@ -5,4 +5,5 @@ export enum MsgType {
      TypedInd = 'TypedInd',  
      ChatBotJoin = 'ChatBotJoin',
      ChatBotLeave = 'ChatBotLeave',
+     Error = 'Error',
 }
