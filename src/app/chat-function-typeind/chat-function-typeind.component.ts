@@ -29,44 +29,14 @@ export class ChatFunctionTypeindComponent implements OnInit {
   }
   
     private addtoTypedList (msgbean): void {
-       // let isAdded = false;
         if (msgbean.uniqueId !== this.uniqueMsgId && msgbean.msgType === (MsgType.TypedInd as string)) {
-           /* this.typingUserList.forEach((value, index) => {
-                 if (value.uniqueId === msgbean.uniqueId) {
-                      value.typedTime = msgbean.typedTime;
-                      isAdded = true;
-                      return ;
-                 }
-            });
-               if (!isAdded) {
-                  this.typingUserList.push(msgbean);
-               }
-        }*/
-          
-         this.ngRedux.dispatch({type: ADD_TYPED_LIST, msgbeanpayload: msgbean});
-        //  this.updateTypedInd();
+           this.ngRedux.dispatch({type: ADD_TYPED_LIST, msgbeanpayload: msgbean});
       }
     }
   
     private removeOldestFromList (): void {
          setInterval(e => {
-                  /*this.typingUserList = this.typingUserList.filter(items => 
-                         ((Date.now() - items.typedTime) < this.typedKeepAlive ));    */
-           this.ngRedux.dispatch({type: REMOVE_TYPED_LIST, keepAliveTime: this.typedKeepAlive});
-                     
-           //  this.updateTypedInd();
+            this.ngRedux.dispatch({type: REMOVE_TYPED_LIST, keepAliveTime: this.typedKeepAlive});           
          }, this.typedKeepAlive);
     }
-  
-  /*private updateTypedInd (): void {
-      if (this.typedList.length === 0) {
-           this.typeMsg = '';
-      } else if (this.typedList.length > 8) {
-          this.typeMsg  = '8 or more are typing ...';
-      } else  {
-           const singularPlural = (this.typedList.length === 1) ? ' is' : ' are';
-           this.typeMsg = this.typedList.map(item => item.userName).join(', ') + ' '
-              + singularPlural + ' typing...';
-      }
-  }*/
 }

@@ -3,6 +3,10 @@ import { MessageBean } from '../messagebean';
 import { WebsocketService } from '../websocket.service';
 import { environment } from '../../environments/environment';
 import { MsgType } from '../msgtype.enum';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
+import { UPDATE_USER_DETAILS } from '../actions';
+
 
 @Component({
   selector: 'app-enterusername',
@@ -12,26 +16,21 @@ import { MsgType } from '../msgtype.enum';
 export class EnterusernameComponent implements OnInit {
 
  checkIfEmptyClassName = '';
-  constructor(private wsService: WebsocketService) { }
-  public enteredUserName: String;
-  public msgId: number;
-  public showHideChat = false;
+  constructor(private wsService: WebsocketService, private ngRedux: NgRedux<IAppState>) { }
   public labelVisibility = 'hidden';
   public placeHolderValue = 'Enter Name';
-  
+    
   ngOnInit() {
   }
 
   addUserToChat(usrName) {
     if (usrName && usrName.trim()) {
-      this.enteredUserName = usrName;
-      this.msgId = Date.now();
             
       const msgbean: MessageBean = {
-         userName : this.enteredUserName,
+         userName : usrName,
          msgType : MsgType.Joined,
          chat : '',
-         uniqueId: this.msgId,
+         uniqueId: Date.now(),
          chatDate: Date.now(),
          typedTime: 0,
          userstats: [],
@@ -39,8 +38,9 @@ export class EnterusernameComponent implements OnInit {
          isChatBot: false
       };
       
+      this.ngRedux.dispatch({type: UPDATE_USER_DETAILS, msgbeanpayload: msgbean});
+      
       this.wsService.connect(environment.websocket_url, msgbean);
-      this.showHideChat = true;
     } else {
       const vm = this;
       vm.checkIfEmptyClassName = 'userNameEmpty';

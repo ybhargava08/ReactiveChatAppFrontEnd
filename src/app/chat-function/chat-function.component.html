@@ -5,10 +5,10 @@
  <li *ngFor = "let leaveMsg of (listLeft | async)" [@leaveSlideLeft] = "leaveSlideLeft">{{leaveMsg.userName}} {{leaveMsg.msgType}}</li>
 </ul>
 <div id="chatBox">
-<app-chat-function-user-count [uniqueMsgId] = "uniqueMsgId" [chatUserName] = "chatUserName" 
-                         [avatarColor] = "avatarColor"></app-chat-function-user-count>
-<app-chat-function-msgshowarea [chatUserName] = "chatUserName"></app-chat-function-msgshowarea>
-<app-chat-function-typeind [uniqueMsgId] = "uniqueMsgId"></app-chat-function-typeind>
-<app-chat-function-msg-send-area [chatUserName] = "chatUserName" [uniqueMsgId] = "uniqueMsgId" 
-                               [avatarColor]="avatarColor"></app-chat-function-msg-send-area>
+<app-chat-function-user-count [uniqueMsgId] = "(userInfo | async).uniqueId" [chatUserName] = "(userInfo | async).userName" 
+                         [avatarColor] = "(userInfo | async).userAvatarColor"></app-chat-function-user-count>
+<app-chat-function-msgshowarea [chatUserName] = "(userInfo | async).userName"></app-chat-function-msgshowarea>
+<app-chat-function-typeind [uniqueMsgId] = "(userInfo | async).uniqueId"></app-chat-function-typeind>
+<app-chat-function-msg-send-area [chatUserName] = "(userInfo | async).userName" [uniqueMsgId] = "(userInfo | async).uniqueId" 
+                               [avatarColor]="(userInfo | async).userAvatarColor"></app-chat-function-msg-send-area>
 </div>

@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Basic Group Chat';
+  showHideChat = false;
+  
+  toggleChat(val: boolean) {
+      this.showHideChat = val;
+  }
 }

@@ -1,5 +1,7 @@
 import { MessageBean } from './messagebean';
-import { UPDATE_CHAT_MSG_LIST, UPDATE_JOINED_LIST, UPDATE_LEFT_LIST, ADD_TYPED_LIST, REMOVE_TYPED_LIST, ONLINE_USER_LIST } from './actions';
+import { UPDATE_CHAT_MSG_LIST, UPDATE_JOINED_LIST, UPDATE_LEFT_LIST, ADD_TYPED_LIST, REMOVE_TYPED_LIST, 
+  ONLINE_USER_LIST, UPDATE_USER_DETAILS, UPDATE_AVATAR_COLOR } from './actions';
+import { MsgType } from './msgtype.enum';
 
 export interface IAppState {
    listchatmsgbeans: MessageBean[];
@@ -7,6 +9,7 @@ export interface IAppState {
    listLeft: MessageBean[];
    typedList: MessageBean[];
    onlineUserList: MessageBean[];
+    userInfo: MessageBean;
 }
 
 export const INITIAL_STATE = {
@@ -15,9 +18,25 @@ export const INITIAL_STATE = {
      listLeft: [],
      typedList: [],
      onlineUserList: [],
+     userInfo: initialBeanState(),
 };
 
-export function rootReducer(state , action) {
+function initialBeanState(): MessageBean {
+  const userInfo: MessageBean = {
+         userName : '',
+         msgType : MsgType.Joined,
+         chat : '',
+         uniqueId: 0,
+         chatDate: Date.now(),
+         typedTime: 0,
+         userstats: [],
+         userAvatarColor: '',
+         isChatBot: false
+     };
+  return userInfo;
+}
+
+export function rootReducer(state: IAppState , action): IAppState {
     switch (action.type) {
          
          case UPDATE_CHAT_MSG_LIST: 
@@ -58,6 +77,16 @@ export function rootReducer(state , action) {
           return Object.assign({}, state, {
              onlineUserList: action.msgbeanpayload.userstats.sort()
           });
+        case UPDATE_USER_DETAILS:
+            return Object.assign({}, state, {
+               userInfo: Object.assign({}, action.msgbeanpayload)
+            }); 
+        case UPDATE_AVATAR_COLOR:
+        return Object.assign({}, state, {
+               userInfo: Object.assign({}, state.userInfo, {
+                   userAvatarColor: action.avatarcolor
+               })
+            });
     }
     return state;
 }

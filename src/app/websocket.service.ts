@@ -15,6 +15,8 @@ export class WebsocketService {
   public connect(url, msg: MessageBean): void {
        this.ws = new WebSocket(url);
        this.ws.onopen = (e) => {
+         
+       // console.log('opened websoc conn ' + this.ws.readyState + 'bean sent ' + msg.uniqueId + ' ' + msg.userName);
         this.sendMessage(msg);
       };
       
